@@ -1,6 +1,5 @@
 import keyboard
 import pyperclip
-#from gpt4free import you
 import json
 import re
 from typing import Optional, List, Dict, Any
@@ -11,7 +10,7 @@ from tls_client import Session
 
 #-------------------------------------Edit Here-------------------------------------
 
-USER_PROMPT = "help me rephrase the following text in a professional manner, and keep the text length about the same as the original text: "
+USER_PROMPT = "help me rephrase the following text in a professional manner, and keep the text length about the same as the original text. also your answer should only consist of the rephrased text, without an introduction : "
 KEYBOARD_SHORTCUT = 'ctrl+alt+g'
 
 #-----------------------------------------------------------------------------------
