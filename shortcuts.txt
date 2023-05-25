@@ -1,6 +1,6 @@
 ctrl+alt+p - rephrase professionally 
 ctrl+alt+c - rephrase concisely
-ctrl+alt+g - rephrase with grammer&spelling fix only
+ctrl+alt+g - rephrase with grammer & spelling fixes only
 ctrl+alt+t - translate to English
 
 
