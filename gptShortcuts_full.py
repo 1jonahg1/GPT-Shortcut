@@ -9,10 +9,21 @@ from pydantic import BaseModel
 from tls_client import Session
 
 #-------------------------------------Edit Here-------------------------------------
+#professional
+USER_PROMPT1 = "help me rephrase the following text in a professional manner, and keep the text length about the same as the original text. also your answer should only consist of the rephrased text, without an introduction : "
+KEYBOARD_SHORTCUT1 = 'ctrl+alt+p'
 
-USER_PROMPT = "help me rephrase the following text in a professional manner, and keep the text length about the same as the original text. also your answer should only consist of the rephrased text, without an introduction : "
-KEYBOARD_SHORTCUT = 'ctrl+alt+g'
+#concise
+USER_PROMPT2 = "help me rephrase the following text in the most concise and shortest way possible without damaging the message of the content. also your answer should only consist of the rephrased text, without an introduction : "
+KEYBOARD_SHORTCUT2 = 'ctrl+alt+c'
 
+#grammer
+USER_PROMPT3 = "help me rephrase the following text, but only fix grammer and spelling mistakes. also your answer should only consist of the rephrased text, without an introduction : "
+KEYBOARD_SHORTCUT3 = 'ctrl+alt+g'
+
+#translate
+USER_PROMPT4 = "translate the following text into English. also your answer should only consist of the rephrased text, without an introduction : "
+KEYBOARD_SHORTCUT4 = 'ctrl+alt+t'
 #-----------------------------------------------------------------------------------
 
 class PoeResponse(BaseModel):
@@ -120,23 +131,45 @@ class Completion:
 
 
 # chatbot
-def you_chatbot(input_text = " "):
-    prompt = USER_PROMPT + input_text
+def you_chatbot(input_text = " ", user_prompt = USER_PROMPT1):
+    prompt = user_prompt + input_text
     response = Completion.create(prompt=prompt, 
                                      # detailed=True
                                      )
     return response.text
 
 # set hotkey
-def hotkey_pressed():
+def hotkey_pressed_rephrase():
     copied_text = pyperclip.paste() 
     response = you_chatbot(copied_text)
     pyperclip.copy(response)
     print(response) 
 
+def hotkey_pressed_concise():
+    copied_text = pyperclip.paste() 
+    response = you_chatbot(copied_text, USER_PROMPT2)
+    pyperclip.copy(response)
+    print(response) 
+
+
+def hotkey_pressed_grammer():
+    copied_text = pyperclip.paste() 
+    response = you_chatbot(copied_text, USER_PROMPT3)
+    pyperclip.copy(response)
+    print(response) 
+
+    
+def hotkey_pressed_translate():
+    copied_text = pyperclip.paste() 
+    response = you_chatbot(copied_text, USER_PROMPT4)
+    pyperclip.copy(response)
+    print(response) 
 
 # register the hotkey using the keyboard library
-keyboard.add_hotkey(KEYBOARD_SHORTCUT, hotkey_pressed)
+keyboard.add_hotkey(KEYBOARD_SHORTCUT1, hotkey_pressed_rephrase)
+keyboard.add_hotkey(KEYBOARD_SHORTCUT2, hotkey_pressed_concise)
+keyboard.add_hotkey(KEYBOARD_SHORTCUT3, hotkey_pressed_grammer)
+keyboard.add_hotkey(KEYBOARD_SHORTCUT4, hotkey_pressed_translate)
 # wait for keyboard events
 keyboard.wait()
 
