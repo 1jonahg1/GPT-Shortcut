@@ -1,5 +1,5 @@
 # GPT-Shortcut
-Configures a keyboard shortcut for GPT to function based on the text stored in the clipboard.
+Rephrase text stored in your clipboard from anywhere with help from Gpt, using a keyboard shortcut.
 
 ## Table of Contents
 
